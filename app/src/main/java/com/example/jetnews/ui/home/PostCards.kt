@@ -61,7 +61,13 @@ import com.example.jetnews.ui.theme.JetnewsTheme
 fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
     var openDialog by remember { mutableStateOf(false) }
     Row(
-        Modifier.clickable { navigateToArticle(post.id) }
+        Modifier.clickable (
+
+            // R.string.action_read_article is a string resource that is used as a content description
+            onClickLabel = stringResource(R.string.action_read_article)
+        ){
+            navigateToArticle(post.id)
+        }
     ) {
         CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium){
             Icon(
