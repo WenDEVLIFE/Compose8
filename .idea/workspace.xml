@@ -9,8 +9,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff31bdf7-5e19-4e51-9c2b-01f7a35b323c" name="Changes" comment="Added visual elements in descriptions 👾">
+    <list default="true" id="ff31bdf7-5e19-4e51-9c2b-01f7a35b323c" name="Changes" comment="Added mergeDescendants for accessability 👾👾">
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/JetNews.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/JetNews.app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jetnews/ui/article/PostContent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jetnews/ui/article/PostContent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jetnews/ui/interests/InterestsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jetnews/ui/interests/InterestsScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718606047812</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added visual elements in descriptions 👾">
+      <option name="closed" value="true" />
+      <created>1718606817263</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718606817263</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -230,6 +241,7 @@
     <MESSAGE value="Added click labels" />
     <MESSAGE value="Added custom actions " />
     <MESSAGE value="Added visual elements in descriptions " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added visual elements in descriptions " />
+    <MESSAGE value="Added mergeDescendants for accessability " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added mergeDescendants for accessability " />
   </component>
 </project>
