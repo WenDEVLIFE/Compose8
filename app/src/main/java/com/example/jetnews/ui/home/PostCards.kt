@@ -30,6 +30,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -48,6 +49,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.CustomAccessibilityAction
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.customActions
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -60,6 +66,7 @@ import com.example.jetnews.ui.theme.JetnewsTheme
 @Composable
 fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
     var openDialog by remember { mutableStateOf(false) }
+    val showFewerLabel = stringResource(R.string.cd_show_fewer)
     Row(
         Modifier.clickable (
 
@@ -68,16 +75,33 @@ fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
         ){
             navigateToArticle(post.id)
         }
+            // Semantics for accessibility
+            .semantics {
+
+                // The custom action is added to the semantics of the row
+                customActions =  listOf(
+                    CustomAccessibilityAction(
+                        label = showFewerLabel,
+
+                        // The action is triggered when the user double-taps the screen
+                        action = {
+                            openDialog = true
+                            true
+                        }
+                    )
+                )
+            }
     ) {
         CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium){
-            Icon(
-                imageVector = Icons.Default.Close,
-                contentDescription = stringResource(R.string.cd_show_fewer),
-                modifier = Modifier
-                    .clickable { openDialog = true }
-                    .size(24.dp)
-                    .padding(12.dp)
-            )
+            IconButton(
+                modifier = Modifier.clearAndSetSemantics {  },
+                onClick = {openDialog = true}) {
+                Icon(
+                    imageVector = Icons.Default.Close,
+                    contentDescription = showFewerLabel
+                )
+                
+            }
         }
         Column(
             Modifier
@@ -146,9 +170,18 @@ fun PostCardPopular(
     navigateToArticle: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    // Added a string resource for the read article label
+    val readArticleLabel = stringResource(R.string.action_read_article)
     Card(
         shape = MaterialTheme.shapes.medium,
-        modifier = modifier.size(280.dp, 240.dp),
+        modifier = modifier
+            .size(280.dp, 240.dp)
+            .semantics {
+                onClick(
+                    label = readArticleLabel,
+                    action = null
+                ) // added semantics for accessibility
+            },
         onClick = { navigateToArticle(post.id) }
     ) {
         Column {
